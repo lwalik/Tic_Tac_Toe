@@ -27,6 +27,11 @@ class Board:
             self.variable = 0
 
     def move(self):
+        if self.variable == 0:
+            print("Now it's X's turn.")
+        elif self.variable == 1:
+            print("Now it's O's turn.")
+
         pick = input("What's your move (example: A1, B2):")
         pickRow = pick[0]
         pickColumn = int(pick[1])
@@ -129,6 +134,24 @@ class Board:
         return self.currentBoard
 
 
+def print_score(scoreX=0, scoreO=0):
+    if scoreX > scoreO:
+        print("Player X Won the game!")
+        print(10 * " ", f"|Score|")
+        print(f"Player X scored {scoreX} points.")
+        print(f"Player O scored {scoreO} points.")
+    elif scoreO > scoreX:
+        print("Player O Won the game!")
+        print(10 * " ", f"|Score|")
+        print(f"Player X scored {scoreX} points.")
+        print(f"Player O scored {scoreO} points.")
+    else:
+        print("It's a Draw in game!")
+        print(10 * " ", f"|Score|")
+        print(f"Player X scored {scoreX} points.")
+        print(f"Player O scored {scoreO} points.")
+
+
 board = Board()
 print(board)
 scoreX = 0
@@ -173,18 +196,4 @@ while True:
         else:
             break
 
-if scoreX > scoreO:
-    print("Player X Won the game!")
-    print(10 * " ", f"|Score|")
-    print(f"Player X scored {scoreX} points.")
-    print(f"Player O scored {scoreO} points.")
-elif scoreO > scoreX:
-    print("Player O Won the game!")
-    print(10 * " ", f"|Score|")
-    print(f"Player X scored {scoreX} points.")
-    print(f"Player O scored {scoreO} points.")
-else:
-    print("It's a Draw in game!")
-    print(10 * " ", f"|Score|")
-    print(f"Player X scored {scoreX} points.")
-    print(f"Player O scored {scoreO} points.")
+print_score(scoreX, scoreO)
